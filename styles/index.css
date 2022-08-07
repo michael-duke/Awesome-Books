@@ -181,3 +181,31 @@ a.topic-active::after {
 .hide-section {
   display: none !important;
 }
+
+.add-btn {
+  position: relative;
+  white-space: nowrap;
+}
+
+.add-btn .alert-tooltip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  font-size: 0.875rem;
+  opacity: 0;
+  line-height: 1.5;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: visibility 0.5s ease-in-out;
+}
+
+.on-success {
+  background-color: #42f578;
+  opacity: 1;
+}
+
+.on-error {
+  background-color: rgb(226 80 92 / 90%);
+  opacity: 1;
+}

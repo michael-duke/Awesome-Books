@@ -1,3 +1,4 @@
+import { validStatus, BookValidation } from './book-valiadtion.js';
 import CreateBook from './create-book.js';
 import { DynamicBook, status } from './dynamic-book.js';
 import Time from './time.js';
@@ -35,12 +36,15 @@ class BooksCollection {
     const bookAuthor = document.getElementById('author');
     const { value: author } = bookAuthor;
 
-    const newBook = new CreateBook(id, title, author);
-    this.addBook(newBook);
-    DynamicBook.renderBooks(this.library, this);
-
-    bookTitle.value = '';
-    bookAuthor.value = '';
+    BookValidation.validateBook(title, author);
+    if (validStatus.isValid) {
+      const newBook = new CreateBook(id, title, author);
+      this.addBook(newBook);
+      DynamicBook.renderBooks(this.library, this);
+      validStatus.isValid = false;
+      bookTitle.value = '';
+      bookAuthor.value = '';
+    }
   }
 
   isCollectionEmpty() {
