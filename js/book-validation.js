@@ -1,9 +1,9 @@
-const validStatus = {
-  isValid: false,
-};
-
 class BookValidation {
-  static validateBook(title, author) {
+  constructor() {
+    this.isValid = false;
+  }
+
+  validateBook(title, author) {
     const alertTooltip = document.querySelector('.alert-tooltip');
     if (title.length < 1 || title === undefined) {
       alertTooltip.textContent = '* Make sure to fill your book Title';
@@ -18,7 +18,7 @@ class BookValidation {
         alertTooltip.style.visibility = 'hidden';
       }, 2000);
     } else {
-      validStatus.isValid = true;
+      this.isValid = true;
       alertTooltip.classList.remove('on-error');
       alertTooltip.classList.add('on-success');
       alertTooltip.textContent = 'You added a new Book.';
@@ -30,4 +30,4 @@ class BookValidation {
   }
 }
 
-export { validStatus, BookValidation };
+export default BookValidation;

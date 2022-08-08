@@ -1,11 +1,11 @@
-const status = {
-  messageOn: false,
-};
-
 //  View
-class DynamicBook {
-  static renderEmptyMessage() {
-    status.messageOn = true;
+export default class DynamicBook {
+  constructor() {
+    this.messageOn = false;
+  }
+
+  renderEmptyMessage() {
+    this.messageOn = true;
     const bookList = this.resetBookDisplay();
     const bookInfoContainer = bookList.querySelector('.book-info-container');
     bookInfoContainer.classList.add('p-4');
@@ -19,10 +19,9 @@ class DynamicBook {
 
     bookInfoContainer.append(message, smileyFace);
     bookList.appendChild(bookInfoContainer);
-    return this.library;
   }
 
-  static resetBookDisplay() {
+  resetBookDisplay = () => {
     const bookDisplay = document.querySelector('.books-display');
     bookDisplay.innerHTML = '';
 
@@ -37,7 +36,7 @@ class DynamicBook {
     return bookDisplay;
   }
 
-  static renderBooks(collection, bookInstance) {
+  renderBooks(collection, bookInstance) {
     const bookList = this.resetBookDisplay();
     const bookInfoContainer = bookList.querySelector('.book-info-container');
     collection.forEach((book) => {
@@ -80,5 +79,3 @@ class DynamicBook {
     });
   }
 }
-
-export { DynamicBook, status };
